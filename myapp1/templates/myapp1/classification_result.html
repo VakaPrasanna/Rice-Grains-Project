@@ -1,0 +1,20 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Classification Result</title>
+    <!-- Include any necessary CSS or other head elements -->
+</head>
+<body>
+
+<h1>Image Classification Result</h1>
+
+<!-- Display the processed image URL for debugging 
+<p>Processed Image URL: {{ processed_image.image.url }}</p>-->
+<img src="{{ processed_image.image.url }}" alt="Processed Image">
+<p>Classification Result: {{ processed_image.classification_result }}</p>
+
+</body>
+</html>
