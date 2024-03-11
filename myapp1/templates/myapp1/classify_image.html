@@ -1,4 +1,3 @@
-<!-- myapp1/templates/myapp1/classify_image.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,14 +5,107 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Classification</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+    
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+    
+        #background-video {
+            position: fixed;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+        }
+    
+        h1 {
+            font-size: 40px;
+            font-weight: bolder;
+            text-align: center;
+            margin: 0;
+            color: #ffffff;
+            background-color: #9c6644;
+            padding: 10px;
+            width: 100vw;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    
+        form {
+            font-size: 30px;
+            font-weight: bolder;
+            text-align: center;
+            background: linear-gradient(to right, #deab90, #cd9777, #9d6b53,#b07d62, #9c6644,#6d4c3d); 
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 600px; 
+            width: 100%;
+        }
+        
+        form label {
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        form input {
+            margin-bottom: 30px;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            background-color: #ffffff;
+            color: #333;
+            width: 100%; /* Take full width of the container */
+        }
+
+        form button {
+            font-size: 20px; 
+            padding: 15px;
+            border-radius: 8px;
+            border: none;
+            background-color: #6a381f;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: auto; 
+        }
+
+        form button:hover {
+            background-color: #99582a;
+        }
+
+    </style>
 </head>
 <body>
-    <h2>Upload an Image for Classification</h2>
+    
+    <h1>Upload an Image for Classification</h1>
+
+    <video id="background-video" loop muted autoplay>
+        <source src="media/r4.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <label for="image">Choose an image:</label>
         <input type="file" name="image" id="image" accept="image/*" required>
         <button type="submit">Classify</button>
     </form>
+    
 </body>
 </html>
